@@ -1,8 +1,4 @@
-2015-12-14 - Sam
+# Branch: Feed-Dev
+Purpose: Testing new ideas for reading nes feeds (and obtaining test data)
 
-Minimum functionality:
-1. Tools to connect in real time to external data sets
-2. Tools to test relationships between some external factor and asset price changes that signal an actionable opportunity
-3. Monitors that look for tested signals in the external data and take action
-4. A means of selecting the best of available opportunities to act on to optimise scarce capital
-5. A way of keeping score for each model to see if they need to be turned off or moderated
+Expect that none of this is currently working

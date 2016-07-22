@@ -4,11 +4,8 @@
 # Version 1.0   :   19-Feb-2016 : Basic functionality
 
 import feedparser
-from bs4 import BeautifulSoup
-import requests
-import hashlib
-import warnings
-import time
+
+
 
 
 class Article:
@@ -24,6 +21,9 @@ class Article:
         html:       The full HTML text of the article
     """
     
+    logging_level = 'DEBUG' # Must be provided. Accepts DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+
     def __init__(self, feedparser_entry):
         """
         Create a new Article.
@@ -32,6 +32,32 @@ class Article:
         Arguments:
             feedparser_entry: An 'entry' object from a feed parsed by feedreader.
         """
+        # imports
+        from bs4 import BeautifulSoup
+        import requests
+        import hashlib
+        #import warnings
+        import time
+        # make a logger for the instance
+        import logging
+        try:  
+            from logging import NullHandler
+        except ImportError:
+            class NullHandler(logging.Handler):
+                def emit(self, record):
+                    pass
+        logging.basicConfig(filename='Article.log')
+        # set logging level based on class variable
+        if logging_level == 'DEBUG': logging.setLevel(logging.DEBUG)
+        if logging_level == 'INFO': logging.setLevel(logging.INFO)
+        if logging_level == 'WARNING': logging.setLevel(logging.WARNING)
+        if logging_level == 'ERROR': logging.setLevel(logging.ERROR)
+        if logging_level == 'CRITICAL': logging.setLevel(logging.CRITICAL)
+        logger = logging.getLogger(__name__).addHandler(NullHandler())
+        logger.debug('Instantiating an Article')
+
+Only got this far including logging
+
         self.downloaded = False
         self.parsed = False
         self.link = ''
