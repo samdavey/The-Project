@@ -1,0 +1,26 @@
+###############################################################
+# Guide to setting up docker				      #
+###############################################################
+
+#pull down the docker image 'ds_toolkit' from the repository 'joshuabarber'
+docker pull joshuabarber/ds_toolkit
+
+#The below command is to create a new custom container. It looks fiendish but the syntax is pretty simple:
+# docker run i.e. start a container
+# -d (detached i.e. without a terminal)    -p xxxx:yyyy (patch localhost:xxxx to vmlocalhost:yyyy)  -v /vm/path:/docker/path (mount '/vm/path' to the folder '/docker/path')
+# In this case: 
+# 'joshuabarber/ds_toolkit' is the image we will build our container from, while 
+# 'start-notebook.sh' is the command we will execute (a script to start jupyter notebooks running on port 8888)
+docker run -d -p 8888:8888 -p 5000:5000 -v c:/Users:/home/jovyan/work joshuabarber/ds_toolkit start-notebook.sh
+
+#list all running containers; while 'docker ps -a' will show all containers, including one's that aren't running
+docker ps
+#rename a specified container
+docker rename [name of the docker container we saw in 'docker ps', should be something like 'condescending_poincare'] magic
+#once you are finished
+docker stop magic
+
+#Then forever-more you can start that container just by booting up your pc and entering in powershell:
+docker start magic
+#and this gives us a terminal for running python scripts etc (this can also be done at localhost:8888)
+docker exec -it magic /bin/bash
