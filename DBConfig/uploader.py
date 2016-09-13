@@ -50,7 +50,7 @@ class csv_upload(object):
 		"""
 		try:
 			#initialise the config.ini file
-			script_path = os.path.dirname(sys.argv[0])
+			script_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 			config = configparser.ConfigParser()
 			config.read(script_path+'/config.ini')
 
