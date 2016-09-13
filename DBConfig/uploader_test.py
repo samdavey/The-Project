@@ -1,5 +1,5 @@
 import uploader
-
+"""
 path_to_data1 = "/home/jovyan/work/_core/projects/datasets/analytix-flights/test"
 path_to_data2 = "/home/jovyan/work/_core/projects/datasets/analytix-flights/test"
 
@@ -14,3 +14,9 @@ if __name__ == '__main__':
 	#Test two: load all files into separate tables
     upload2 = uploader.csv_upload(path_to_data2)
     print("Test two: "+upload2.multi_upload())
+"""
+
+path_to_data = "/home/jovyan/work/_core/projects/web_magic/database"
+if __name__ == '__main__':
+    upload = uploader.csv_upload(path_to_data)
+    print("Upload results: "+upload.multi_upload())
